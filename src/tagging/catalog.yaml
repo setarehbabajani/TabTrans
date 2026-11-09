@@ -1,0 +1,354 @@
+tags:
+  DATE_ISO_YYYY_MM_DD:
+    category: date
+    description: Date formatted in ISO-like YYYY-MM-DD form. Use calendar_system to
+      indicate which calendar the date is expressed in (Gregorian or Jalali).
+    examples:
+      - "2024-03-05"
+      - "1403-01-15"
+    parameters:
+      calendar_system: null
+
+  DATE_LONG_MONTH_NAME:
+    category: date
+    description: Date written with the month spelled out.
+    examples:
+      - "March 5 2024"
+    parameters: 
+      is_month_first: null
+
+  DATE_DD_MM_YYYY:
+    category: date
+    description: Date formatted as day-month-year.
+    examples:
+      - "05-03-2024"
+      - "12/01/1998"
+    parameters:
+      delimiter: null
+
+  DATE_MM_DD_YYYY:
+    category: date
+    description: Date formatted as month-day-year.
+    examples:
+      - "03-05-2024"
+      - "12/25/1998"
+    parameters:
+      delimiter: null
+
+  YEAR:
+    category: date
+    description: A four digit calendar year. Use calendar_system to indicate which
+      calendar the year is expressed in (Gregorian or Solar Hijri/Jalali).
+    examples:
+      - "1998"
+      - "2024"
+      - "1398"
+      - "1403"
+    parameters:
+      calendar_system: null 
+
+  MONTH:
+    category: date
+    description: Month component of a date represented as a number from 1 to 12.
+    examples:
+      - "1"
+      - "3"
+      - "january"
+      - "jan"
+    parameters:
+      format: null 
+
+  DAY:
+    category: date
+    description: Day component of a date represented as a number from 1 to 31.
+    examples:
+      - "1"
+      - "15"
+    parameters: {}
+
+  YEAR_RANGE:
+    category: date
+    description: A range of years representing start and end year.
+    examples:
+      - "1998-2004"
+      - "2010–2018"
+    parameters:
+      delimiter: null
+
+  PERSON_NAME_FULL:
+    category: person
+    description: Full name of a person including first and last name.
+    examples:
+      - "Albert Einstein"
+    parameters: {}
+    
+  PERSON_NAME_WITH_TITLE:
+    category: person
+    description: Full name of a person prefixed with an honorific title.
+    examples:
+      - "Dr. Albert Einstein"
+    parameters:
+      title: null     
+      delimiter: null 
+
+  PERSON_NAME_FIRST:
+    category: person
+    description: First (given) name of a person.
+    examples:
+      - "Albert"
+    parameters: {}
+
+  PERSON_NAME_LAST:
+    category: person
+    description: Last (family) name of a person.
+    examples:
+      - "Einstein"
+    parameters: {}
+
+  PERSON_USERNAME:
+    category: person
+    description: Username or identifier derived from a person's name or account identifier. The system may later generate this using a formatting rule applied to first, middle, or last names.
+    examples:
+      - "jsmith"
+      - "taylor_swift"
+    parameters:
+      format_rule: null
+
+  PERSON_NAME_INITIALS:
+    category: person
+    description: Initials derived from a person's name.
+    examples:
+      - "A.E."
+      - "AE"
+      - "A. Einstein"
+    parameters:
+      format_rule: null
+
+  ADDRESS_FULL:
+    category: location
+    description: Full address including street, city, and possibly country.
+    examples:
+      - "123 Main St, Edmonton, Alberta, Canada"
+    parameters: 
+      delimiter: null
+      has_country: null
+      has_state: null
+      has_city: null
+      has_street: null
+
+  STREET:
+    category: location
+    description: Street name.
+    examples:
+      - "123 Main St"
+      - "742 Evergreen Terrace"
+    parameters: {}
+
+  CITY:
+    category: location
+    description: City name.
+    examples:
+      - "Edmonton"
+      - "Paris"
+    parameters: {}
+
+  CITY_ABBREVIATION:
+    category: location
+    description: Shortened or abbreviated form of a city name (e.g., informal
+      abbreviations, airport-style city codes, or common short forms).
+    examples:
+      - "LA"
+      - "NYC"
+      - "SF"
+      - "YEG"
+    parameters: {}
+
+  STATE:
+    category: location
+    description: State or province name.
+    examples:
+      - "Alberta"
+      - "California"
+    parameters: {}
+
+  COUNTRY_NAME:
+    category: location
+    description: Full name of a country.
+    examples:
+      - "Canada"
+      - "France"
+    parameters: {}
+
+  CONTINENT:
+    category: location
+    description: Name of a continent.
+    examples:
+      - "Asia"
+      - "North America"
+      - "Oceania"
+    parameters: {}
+
+  EMAIL_FULL:
+    category: contact
+    description: Full email address. Emails may sometimes appear without the "@" symbol due to formatting, for example "username domain.com".
+    examples:
+      - "john.smith@gmail.com"
+      - "user@company.com"
+    parameters: {}
+
+  DOMAIN:
+    category: contact
+    description: Domain portion of an email address or any other thing.
+    examples:
+      - "gmail.com"
+      - "company.com"
+    parameters: {}
+
+  COMPOSITE_ENTITY:
+    category: text
+    description: Column where multiple pieces of information are packed inside a single value using delimiters, wrappers, prefixes, suffixes, or templated text patterns. These values may need to be split into separate columns or extracted into structured components. If there was multiple delimiter, put the most frequent one. If wrapper characters are present, record the left and right wrappers.
+    examples:
+      - "Paris (France)"
+      - "Tokyo - Japan"
+      - "Einstein [physicist]"
+      - "Alice; Rodrigez; alberta"
+      - "IR-Setareh"
+      - "Error: This is not a valid number. 6.79"
+    parameters:
+      delimiter: null
+      left_wrapper: null
+      right_wrapper: null
+
+  NUMERIC:
+    category: numeric
+    description: Numeric value stored as a number.
+    examples:
+      - "42"
+      - "3.14"
+      - "1,235"
+    parameters:
+      thousand_separator: null
+      decimal_separator: null
+
+  NUM_WITH_UNIT:
+    category: numeric_unit
+    description: Numeric values associated with a measurement unit. The unit may appear in the column header (e.g., "grams", "km", "hours") or in the cell values.
+    examples:
+      - "12 km"
+      - "2 hours"
+      - "5 kg"
+      - "1/2 (3 oz)"
+      - "3 (4 oz ea.)"
+    parameters:
+      unit_type: null
+      unit: null
+      is_squared: false
+      allowed_units:
+        length_metric:
+          - mm
+          - cm
+          - m
+          - km
+        length_imperial:
+          - in
+          - ft
+          - yd
+          - mi
+          - ha
+        mass:
+          - mg
+          - g
+          - kg
+          - ton
+          - oz
+          - lb
+        temperature:
+          - C
+          - F
+          - K
+        duration:
+          - second
+          - seconds
+          - minute
+          - minutes
+          - hour
+          - hours
+          - day
+          - days
+          - week
+          - weeks
+
+  BOOLEAN:
+      category: logical
+      description: Boolean value, either already in canonical true/false form, or expressed
+        as a textual/numeric variation (e.g., yes/no, y/n, 1/0). Use
+        is_canonical_form to indicate which form the column is currently in.
+      examples:
+        - "true"
+        - "false"
+        - "yes"
+        - "y"
+        - "1"
+        - "no"
+        - "n"
+        - "0"
+      parameters:
+        is_canonical_form: null
+
+  COLUMN_MIXED:
+    category: structural
+    description: Column whose cells belong to different primitive data types across rows. The heterogeneity occurs at the column level, meaning some rows contain numeric values, others contain text values, and/or others contain boolean values. Each individual cell is typically a single value, but the column as a whole mixes multiple data types. This tag should only be used when at least two primitive types (numeric, string, boolean) appear in different rows of the same column. Do not use this tag when multiple pieces of information are packed inside the same cell. Such cases should be tagged as WRAPPED_ENTITY instead.
+    examples:
+      - "123"
+      - "true"
+      - "Alice Rodriguez"
+      - "45"
+    parameters:
+      has_numeric: null
+      has_string: null
+      has_boolean: null
+
+  CURRENCY_VALUE:
+    category: financial
+    description: Monetary value expressed in a specific currency.
+    examples:
+      - "$25"
+      - "€30"
+      - "100 CAD"
+    parameters:
+      currency_symbol: null
+      currency_code: null
+
+  IDENTIFIER_CODE:
+    category: identifier
+    description: Atomic, opaque identifier or code assigned to a single entity, category,
+      or standardized reference value (e.g., stock ticker, bank/SWIFT code,
+      SKU). Codes may contain letters, numbers, or leading zeros, and should generally not be treated as numeric quantities.
+    examples:
+      - "BOFAUS3N"
+      - "AAPL"
+      - "025"
+    parameters:
+      code_type: null
+      has_leading_zero: null
+
+  URL:
+    category: web
+    description: Web address pointing to a resource on the internet.
+    examples:
+      - "https://www.wikipedia.org"
+      - "http://example.com/page"
+    parameters: {}
+
+  STRING:
+      category: text
+      description: General text column containing arbitrary strings. Use has_unicode to
+        indicate whether the column contains non-ASCII/Unicode characters
+        (e.g., "José", "München", "北京") or is ASCII-only.
+      examples:
+        - "product name"
+        - "description"
+        - "José"
+        - "北京"
+      parameters:
+        has_unicode: null
